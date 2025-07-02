@@ -1,7 +1,7 @@
 import React from 'react'
 import shinji from '../shinji.png';
 import bg from "../eoe.png";
-import eva from "../back.gif";
+import eva from "../cbg.webp";
 import bg2 from "../bg2.jpg";
 import { motion } from 'motion/react';
 
