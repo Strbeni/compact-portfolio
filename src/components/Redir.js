@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 
 function Redir(props) {
   return (
-    <motion.div drag className='font-cinzel lg:col-span-1 lg:row-span-1 w-full text-lg px-6 py-5  bg-zinc-900 lg:rounded-lg border border-darkslate-400 hover:border-orange-600 flex align-start justify-between'>
+    <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className='font-cinzel lg:col-span-1 lg:row-span-1 w-full text-lg px-6 py-5  bg-zinc-900 lg:rounded-lg border border-darkslate-400 hover:border-orange-600 flex align-start justify-between'>
         <div className=''>
             {props.text}
         </div>
