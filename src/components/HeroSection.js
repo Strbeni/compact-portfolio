@@ -3,18 +3,20 @@ import shinji from '../shinji.png';
 import bg from "../eoe.png";
 import eva from "../back.gif";
 import bg2 from "../bg2.jpg";
+import { motion } from 'motion/react';
+
 function HeroSection() {
     const clicked = (e)=>{
         
     };
   return (
-    <div className='p-6 relative pb-24 shadow-md rounded-lg bg-zinc-900 border border-zinc-700 hover:border-orange-600  lg:grid md:grid grid-cols-4 transition-colors duration-300 ease-in-out' >
+    <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className='p-6 relative pb-24 shadow-md rounded-lg bg-zinc-900 border border-zinc-700 hover:border-orange-600  lg:grid md:grid grid-cols-4 transition-colors duration-300 ease-in-out' >
     {/* <div className='p-4 sm:p-6 relative pb-24 shadow-md rounded-lg bg-zinc-900 border border-zinc-700 hover:border-orange-600 grid grid-cols-1 md:grid-cols-4 transition-colors duration-300 ease-in-out'> */}
 
-        <div className="absolute inset-0 z-0 opacity-20 overflow-hidden">
+        <div className="absolute inset-0 z-10 opacity-20 overflow-hidden">
                             <img src={eva} className="w-full h-full object-cover" />
         </div>
-        <div className='col-span-3'>
+        <div className='col-span-3 z-20'>
         {/* <div className='col-span-full md:col-span-3'> */}
 
             <div className='flex flex-col'>
@@ -27,7 +29,7 @@ function HeroSection() {
 
             </div>
 
-            <div className='flex flex-wrap mt-4 gap-3 font-bitcount text-sm'>
+            <div className='absolute bottom-10 flex flex-wrap mt-4 gap-3 font-bitcount text-sm'>
                 <button className="flex z-10 items-center gap-2 px-4 py-2 border bg-black border-slate-600 hover:border-slate-400 rounded-lg transition-colors">
                     Github
                 </button>
@@ -52,7 +54,7 @@ function HeroSection() {
         <img src={shinji} className="w-full rounded-lg mt-6 md:mt-4 md:col-span-1" />
 
         {/* <img src={shinji}   className="w-full rounded-lg mt-4"/> */}
-    </div>
+    </motion.div>
     
   )
 }

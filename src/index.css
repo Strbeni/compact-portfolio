@@ -15,10 +15,16 @@
   font-style: normal;
 }
 
+::selection {
+  background-color: rgb(255, 98, 0);
+  color: white;
+}
+
+
 body{
-  background-color: black;
+  background-color: rgb(11, 11, 11);
   /*Lineart on background*/
 
-  background: url("./eoe.png");
+  /* background: url("./eoe.png"); */
   background-size: auto;
 }
