@@ -50,7 +50,7 @@ function Sidebar() {
 
   return (
     <>
-      <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className="bg-zinc-900 lg:col-span-1 font-light lg:row-span-5 p-6 rounded-lg border border-zinc-700 hover:border-orange-600">
+      <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className="bg-zinc-900 lg:col-span-1 font-light lg:row-span-5 p-6 rounded-lg border border-zinc-700 hover:border-red-600">
         <p className='text-lg font-bold font-serif'>About me</p>
         <p className='text-sm mb-6 leading-5'>Hi, I'm Strbeni, a front-end software developer from Mohali.</p>
         <p className='text-sm'>My primary tools of choice includes:</p>
