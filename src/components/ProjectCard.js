@@ -13,40 +13,24 @@ import {
 
 const DEFAULT_ITEMS = [
   {
-    title: "Text Animations",
-    description: "Cool text animations for your projects.",
+    title: "Quick Desk",
+    description: "Revolutionary quick desk is coming soon!",
     id: 1,
-    icon: <FiFileText className="h-[16px] w-[16px] text-white" />,
-  },
-  {
-    title: "Animations",
-    description: "Smooth animations for your projects.",
-    id: 2,
-    icon: <FiCircle className="h-[16px] w-[16px] text-white" />,
-  },
-  {
-    title: "Components",
-    description: "Reusable components for your projects.",
-    id: 3,
-    icon: <FiLayers className="h-[16px] w-[16px] text-white" />,
-  },
-  {
-    title: "Backgrounds",
-    description: "Beautiful backgrounds and patterns for your projects.",
-    id: 4,
-    icon: <FiLayout className="h-[16px] w-[16px] text-white" />,
-  },
-  {
-    title: "Common UI",
-    description: "Common UI components are coming soon!",
-    id: 5,
     icon:<FiCode className="h-[16px] w-[16px] text-white" />,
+    backgroundImage: "https://i.ibb.co/7NGSZ8DH/473684737-da787ca6-f7cc-4e46-8728-dc5407c4a2f6.jpg",
   },
-];
+  {
+    title: "Minimal StartPage",
+    description: "Minimal And Fast and Customizable StartPage!",
+    id: 1,
+    icon:<FiCode className="h-[16px] w-[16px] text-white" />,
+    backgroundImage: "https://i.ibb.co/6cRfTfH9/image.png",
+  },
+]
 
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
-const GAP = 16;
+const GAP = 2;
 const SPRING_OPTIONS = { type: "spring", stiffness: 300, damping: 30 };
 
 // import React from 'react';
@@ -54,11 +38,11 @@ const SPRING_OPTIONS = { type: "spring", stiffness: 300, damping: 30 };
 
 function ProjectCard({
    items = DEFAULT_ITEMS,
-  baseWidth = 300,
+  baseWidth = 200,
   autoplay = false,
   autoplayDelay = 3000,
   pauseOnHover = false,
-  loop = false,
+  loop = true,
   round = false,
 }) 
 {
@@ -209,16 +193,27 @@ function ProjectCard({
               }}
               transition={effectiveTransition}
             >
-              <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
-                <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
-                  {item.icon}
-                </span>
-              </div>
-              <div className="p-5">
-                <div className="mb-1 font-black text-lg text-white">
-                  {item.title}
+              {item.backgroundImage && (
+                <>
+                  <div
+                    className="absolute inset-0 z-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${item.backgroundImage})` }}
+                  ></div>
+                  <div className="absolute inset-0 z-10 bg-black/60"></div>
+                </>
+              )}
+              <div className={`relative z-20 flex flex-col h-full ${round ? "justify-center" : "justify-between"}`}>
+                <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
+                  <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
+                    {item.icon}
+                  </span>
                 </div>
-                <p className="text-sm text-white">{item.description}</p>
+                <div className="p-5">
+                  <div className="mb-1 font-black text-lg text-white">
+                    {item.title}
+                  </div>
+                  <p className="text-sm text-white">{item.description}</p>
+                </div>
               </div>
             </motion.div>
           );

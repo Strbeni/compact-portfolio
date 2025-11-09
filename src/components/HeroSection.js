@@ -33,7 +33,9 @@ function HeroSection() {
 
             <div className='absolute bottom-10 flex flex-wrap mt-4 gap-3 font-bitcount text-sm'>
                 <button className="flex z-10 relative shadow hover:shadow-zinc-600 items-center gap-2 px-4 py-2 border bg-black border-slate-600 hover:border-slate-400 rounded-lg transition-colors">
-                    <a href='https://github.com/Strbeni/' target='_blank'>Github</a>
+                    <a href='https://github.com/Strbeni/' target='_blank'>
+                        Github
+                    </a>
                     <div className="absolute inset-0 z-10 opacity-20 overflow-hidden pointer-events-none">
                             <img src={gitlogo} className="w-full h-full object-contain " />
                     </div>

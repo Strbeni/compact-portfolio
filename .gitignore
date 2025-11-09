@@ -11,9 +11,11 @@
 # production
 /build
 
+*.env
+*fireBaseConfig.js
+
 # misc
 /server/config.env
-.env
 .DS_Store
 .env.local
 .env.development.local
