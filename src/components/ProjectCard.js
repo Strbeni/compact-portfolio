@@ -4,11 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 // replace icons with your own if needed
 import {
-  FiCircle,
+  // FiCircle,
   FiCode,
-  FiFileText,
-  FiLayers,
-  FiLayout,
+  // FiFileText,
+  // FiLayers,
+  // FiLayout,
 } from "react-icons/fi";
 
 const DEFAULT_ITEMS = [
