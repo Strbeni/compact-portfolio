@@ -12,7 +12,8 @@ function Home() {
       text-white 
       m-auto 
       p-2 
-      grid 
+      flex /* CHANGED from grid */
+      flex-col /* ADDED */
       gap-2 
       max-w-6xl 
       overflow-hidden  
@@ -20,10 +21,10 @@ function Home() {
       w-full 
       sm:p-4 
       sm:gap-2 
-      md:grid-cols-2 
+      md:p-6 /* REMOVED md:grid-cols-2 */
       md:gap-3 
-      md:p-6 
       lg:h-screen 
+      lg:grid /* ADDED (was grid before, now specific to lg) */
       lg:grid-cols-4 
       lg:grid-rows-[repeat(8,_minmax(0,_1fr))] 
       lg:gap-4

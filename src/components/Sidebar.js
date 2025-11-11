@@ -66,7 +66,7 @@ function Sidebar() {
      <motion.div
   drag
   dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-  className="lg:col-start-4 overflow-hidden row-span-3 relative h-full font-mono text-xs rounded-lg px-2 pt-6 pb-4 lg:row-span-3 bg-zinc-950 border border-zinc-800 shadow-inner"
+  className="lg:col-start-4 overflow-hidden relative h-full font-mono text-xs rounded-lg px-2 pt-6 pb-4 lg:row-span-3 bg-zinc-950 border border-zinc-800 shadow-inner"
 >
   {/* Header */}
   <p className="absolute left-0 top-0 w-full text-center text-white text-[13px] font-semibold bg-zinc-900 border-b border-zinc-700 py-1 rounded-t-md">

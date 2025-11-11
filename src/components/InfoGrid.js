@@ -24,8 +24,8 @@ function InfoGrid() {
   return (
     <>
     
-    <div className='grid lg:grid-cols-3 lg:grid-rows-[repeat(8,_minmax(0,_1fr))] gap-4 min-h-full'>
-      <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className='relative col-start-1 lg:col-span-1 row-span-4 w-full px-4 py-6  bg-neutral-900 lg:rounded-lg border border-slate-400 hover:border-red-600 flex align-start justify-between pl-6'>
+    <div className='flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-[repeat(8,_minmax(0,_1fr))] gap-4 min-h-full'>
+      <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className='relative lg:col-start-1 lg:col-span-1 lg:row-span-4 w-full px-4 py-6  bg-neutral-900 lg:rounded-lg border border-slate-400 hover:border-red-600 flex align-start justify-between pl-6'>
         <div className="absolute inset-0 z-0 opacity-20 overflow-hidden pointer-events-none">
                     <img src={nl} className="w-full h-full object-cover" />
         </div>
@@ -52,9 +52,9 @@ function InfoGrid() {
       </motion.div>
 
       
-      <SecondCol text={currtime()} styleName="row-start-1  row-span-1 border border-slate-400 hover:border-red-600 font-cinzel text-2xl font-semibold"/>
+      <SecondCol text={currtime()} styleName="lg:row-start-1 lg:row-span-1 border border-slate-400 hover:border-red-600 font-cinzel text-2xl font-semibold"/>
 
-      <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className="col-start-2 row-start-2 row-span-2 relative lg:col-span-1 transition duration-75 ease-in-out bg-neutral-900 rounded-lg border border-zinc-600 hover:border-red-600 px-6 py-6 overflow-hidden">
+      <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className="lg:col-start-2 lg:row-start-2 lg:row-span-2 relative lg:col-span-1 transition duration-75 ease-in-out bg-neutral-900 rounded-lg border border-zinc-600 hover:border-red-600 px-6 py-6 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <img src={nl} className="w-full h-full object-cover rounded-lg" />
         </div>
@@ -69,7 +69,7 @@ function InfoGrid() {
         <p className="relative z-10 italic">Currently pursuing Bachelors in Technology</p>
       </motion.div>
 
-    <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className={`col-start-2 text-red-600 relative lg:col-span-1 row-start-4 row-span-1 text-2xl font-semibold transition duration-75 ease-in-out lg:rounded-lg border border-slate-400 hover:border-red-600 flex items-center justify-center font-cinzel`}>
+    <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className={`lg:col-start-2 text-red-600 relative lg:col-span-1 lg:row-start-4 lg:row-span-1 text-2xl font-semibold transition duration-75 ease-in-out lg:rounded-lg border border-slate-400 hover:border-red-600 flex items-center justify-center font-cinzel`}>
             <div className="absolute inset-0 z-10 opacity-20 overflow-hidden pointer-events-none">
                         <img src={eva} alt='Evangelion' className="w-full h-full object-cover rounded-lg" />
             </div>
@@ -84,7 +84,7 @@ function InfoGrid() {
       {/* <SecondCol text="current" styleName="row-start-2 row-span-2 border border-slate-400 hover:border-red-600 "/> */}
 
      
-      <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className='col-start-3 row-span-1 row-start-1 w-full relative px-4 py-6  bg-neutral-900 lg:rounded-lg border border-slate-400 hover:border-red-600 flex align-start justify-between transform perspective-1200 transition duration-75 ease-in-out lg:col-span-1 lg:row-span-1 font-cinzel'>
+      <motion.div drag dragConstraints={{top:0,bottom:0,left:0,right:0}} className='lg:col-start-3 lg:row-span-1 lg:row-start-1 w-full relative px-4 py-6  bg-neutral-900 lg:rounded-lg border border-slate-400 hover:border-red-600 flex align-start justify-between transform perspective-1200 transition duration-75 ease-in-out lg:col-span-1 font-cinzel'>
           <div className="absolute inset-0 z-10 opacity-20 overflow-hidden pointer-events-none">
             <img src={shinji} className="w-full h-full object-cover" />
           </div>
@@ -99,7 +99,7 @@ function InfoGrid() {
       {/* <Redir styleName="row-start-2 row-span-1 col-start-3" text="PlayGround"/>
       
       <Redir styleName="row-start-4 row-span-1 col-start-3" text="Projects"/> */}
-      <div className="col-start-3 row-start-2 row-span-3 w-full overflow-hidden">
+      <div className="lg:col-start-3 lg:row-start-2 lg:row-span-3 w-full overflow-hidden">
         <ProjectCard baseWidth="100%" />
       </div>
 
