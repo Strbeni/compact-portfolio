@@ -39,7 +39,7 @@ const DEFAULT_ITEMS = [
     description: "Need Mechanic? RoadGuard is a platform to get instant Road Help.",
     id: 1,
     icon: <FiCode className="h-[16px] w-[16px] text-white" />,
-    backgroundImage: "https://i.ibb.co/5gmzhQdX/image.png",
+    backgroundImage: "https://i.ibb.co/67HQQxr6/image.png",
     link: "https://github.com/Strbeni/RoadGuard",
   },
 ]
