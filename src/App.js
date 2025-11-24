@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HeroSection from './components/HeroSection'
 import InfoGrid from './components/InfoGrid'
 import Sidebar from './components/Sidebar'
-import Blogs from './components/ProjectCard'
 
 function Home() {
   return (

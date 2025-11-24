@@ -1,7 +1,6 @@
 // fireBaseConfig.js
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
   apiKey: "AIzaSyDqFQp1i9HceSYUjOpnDSPmrp-IafwP5Fo",
   authDomain: "bento-3dc2e.firebaseapp.com",

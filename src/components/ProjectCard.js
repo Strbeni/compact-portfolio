@@ -4,11 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 // replace icons with your own if needed
 import {
-  // FiCircle,
   FiCode,
-  // FiFileText,
-  // FiLayers,
-  // FiLayout,
 } from "react-icons/fi";
 
 const DEFAULT_ITEMS = [
@@ -16,14 +12,14 @@ const DEFAULT_ITEMS = [
     title: "Quick Desk",
     description: "Revolutionary quick desk is coming soon!",
     id: 1,
-    icon:<FiCode className="h-[16px] w-[16px] text-white" />,
+    icon: <FiCode className="h-[16px] w-[16px] text-white" />,
     backgroundImage: "https://i.ibb.co/7NGSZ8DH/473684737-da787ca6-f7cc-4e46-8728-dc5407c4a2f6.jpg",
   },
   {
     title: "Minimal StartPage",
     description: "Minimal And Fast and Customizable StartPage!",
     id: 1,
-    icon:<FiCode className="h-[16px] w-[16px] text-white" />,
+    icon: <FiCode className="h-[16px] w-[16px] text-white" />,
     backgroundImage: "https://i.ibb.co/6cRfTfH9/image.png",
   },
 ]
@@ -33,24 +29,69 @@ const VELOCITY_THRESHOLD = 500;
 const GAP = 2;
 const SPRING_OPTIONS = { type: "spring", stiffness: 300, damping: 30 };
 
-// import React from 'react';
-// import { Link } from 'react-router-dom';
+function CardItem({ item, index, x, trackItemOffset, itemWidth, round, effectiveTransition }) {
+  const range = [
+    -(index + 1) * trackItemOffset,
+    -index * trackItemOffset,
+    -(index - 1) * trackItemOffset,
+  ];
+  const outputRange = [90, 0, -90];
+  const rotateY = useTransform(x, range, outputRange, { clamp: false });
+
+  return (
+    <motion.div
+      className={`relative row-start-2 row-span-2 shrink-0 flex flex-col ${round
+        ? "items-center justify-center text-center bg-[#060010] border-0"
+        : "items-start justify-between bg-[#222] border border-[#222] rounded-[12px]"
+        } overflow-hidden cursor-grab active:cursor-grabbing`}
+      style={{
+        width: itemWidth,
+        height: round ? itemWidth : "100%",
+        rotateY: rotateY,
+        ...(round && { borderRadius: "50%" }),
+      }}
+      transition={effectiveTransition}
+    >
+      {item.backgroundImage && (
+        <>
+          <div
+            className="absolute inset-0 z-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${item.backgroundImage})` }}
+          ></div>
+          <div className="absolute inset-0 z-10 bg-black/60"></div>
+        </>
+      )}
+      <div className={`relative z-20 flex flex-col h-full ${round ? "justify-center" : "justify-between"}`}>
+        <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
+          <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
+            {item.icon}
+          </span>
+        </div>
+        <div className="p-5">
+          <div className="mb-1 font-black text-lg text-white">
+            {item.title}
+          </div>
+          <p className="text-sm text-white">{item.description}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 function ProjectCard({
-   items = DEFAULT_ITEMS,
+  items = DEFAULT_ITEMS,
   baseWidth = 200,
   autoplay = false,
   autoplayDelay = 3000,
   pauseOnHover = false,
   loop = true,
   round = false,
-}) 
-{
+}) {
   const containerPadding = 16;
   // const itemWidth = baseWidth - containerPadding * 2;
   const itemWidth = typeof baseWidth === 'number'
-  ? baseWidth - containerPadding * 2
-  : 300 - containerPadding * 2; // default fallback
+    ? baseWidth - containerPadding * 2
+    : 300 - containerPadding * 2; // default fallback
 
   const trackItemOffset = itemWidth + GAP;
 
@@ -146,11 +187,11 @@ function ProjectCard({
         : "rounded-lg border border-[#222]"
         }`}
       style={{
-              width: typeof baseWidth === 'number' ? `${baseWidth}px` : baseWidth,
-              ...(round && { height: typeof baseWidth === 'number' ? `${baseWidth}px` : baseWidth }),
-              maxWidth: "100%",
-              overflow: "hidden"
-            }}
+        width: typeof baseWidth === 'number' ? `${baseWidth}px` : baseWidth,
+        ...(round && { height: typeof baseWidth === 'number' ? `${baseWidth}px` : baseWidth }),
+        maxWidth: "100%",
+        overflow: "hidden"
+      }}
 
     >
       <motion.div
@@ -169,55 +210,18 @@ function ProjectCard({
         transition={effectiveTransition}
         onAnimationComplete={handleAnimationComplete}
       >
-        {carouselItems.map((item, index) => {
-          const range = [
-            -(index + 1) * trackItemOffset,
-            -index * trackItemOffset,
-            -(index - 1) * trackItemOffset,
-          ];
-          const outputRange = [90, 0, -90];
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          const rotateY = useTransform(x, range, outputRange, { clamp: false });
-          return (
-            <motion.div
-              key={index}
-              className={`relative row-start-2 row-span-2 shrink-0 flex flex-col ${round
-                ? "items-center justify-center text-center bg-[#060010] border-0"
-                : "items-start justify-between bg-[#222] border border-[#222] rounded-[12px]"
-                } overflow-hidden cursor-grab active:cursor-grabbing`}
-              style={{
-                width: itemWidth,
-                height: round ? itemWidth : "100%",
-                rotateY: rotateY,
-                ...(round && { borderRadius: "50%" }),
-              }}
-              transition={effectiveTransition}
-            >
-              {item.backgroundImage && (
-                <>
-                  <div
-                    className="absolute inset-0 z-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${item.backgroundImage})` }}
-                  ></div>
-                  <div className="absolute inset-0 z-10 bg-black/60"></div>
-                </>
-              )}
-              <div className={`relative z-20 flex flex-col h-full ${round ? "justify-center" : "justify-between"}`}>
-                <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
-                  <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
-                    {item.icon}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <div className="mb-1 font-black text-lg text-white">
-                    {item.title}
-                  </div>
-                  <p className="text-sm text-white">{item.description}</p>
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
+        {carouselItems.map((item, index) => (
+          <CardItem
+            key={index}
+            item={item}
+            index={index}
+            x={x}
+            trackItemOffset={trackItemOffset}
+            itemWidth={itemWidth}
+            round={round}
+            effectiveTransition={effectiveTransition}
+          />
+        ))}
       </motion.div>
       <div
         className={`flex w-full justify-center ${round ? "absolute z-20 bottom-12 left-1/2 -translate-x-1/2" : ""
