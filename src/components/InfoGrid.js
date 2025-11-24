@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import shinji from "../cbg.webp"
 import SecondCol from './SecondCol'
 import nl from "../nerv-logo.jpg"
@@ -14,6 +14,15 @@ function InfoGrid() {
     const minutes = date.getMinutes();
     // const seconds = date.getSeconds();
     return `${hours}:${minutes < 10 ? '0' + minutes : minutes} ${hours < 12 ? 'AM' : 'PM'} IST`;
+  }
+
+  const [designText, setDesignText] = useState("Design Works");
+
+  const handleDesignClick = () => {
+    setDesignText("Still in progress...");
+    setTimeout(() => {
+      setDesignText("Design Works");
+    }, 3000);
   }
 
   return (
@@ -33,7 +42,7 @@ function InfoGrid() {
             <address className="flex flex-col mt-4">
               <h2 className="text-slate-300">Contact Details</h2>
               <p className="text-sm text-wrap"><a href='mailto:amityadv747@gmail.com'>contact@amityadv747@gmail.com</a></p>
-              <p className="text-sm text-wrap"><a href='tel:+917973456489'>+91 7973456489</a></p>
+              <p className="text-sm text-wrap"><a href='https://wa.me/917973456489' target="_blank" rel="noopener noreferrer">+91 7973456489</a></p>
               <p>Mohali, India</p>
             </address>
             <div className="flex flex-col mt-4  w-fit">
@@ -79,12 +88,12 @@ function InfoGrid() {
         {/* <SecondCol text="current" styleName="row-start-2 row-span-2 border border-slate-400 hover:border-red-600 "/> */}
 
 
-        <motion.div drag dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }} className='lg:col-start-3 lg:row-span-1 lg:row-start-1 w-full relative px-4 py-6  bg-neutral-900 lg:rounded-lg border border-slate-400 hover:border-red-600 flex align-start justify-between transform perspective-1200 transition duration-75 ease-in-out lg:col-span-1 font-cinzel'>
+        <motion.div onClick={handleDesignClick} drag dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }} className='lg:col-start-3 lg:row-span-1 lg:row-start-1 w-full relative px-4 py-6  bg-neutral-900 lg:rounded-lg border border-slate-400 hover:border-red-600 flex align-start justify-between transform perspective-1200 transition duration-75 ease-in-out lg:col-span-1 font-cinzel cursor-pointer'>
           <div className="absolute inset-0 z-10 opacity-20 overflow-hidden pointer-events-none">
             <img src={shinji} alt="Display" className="w-full h-full object-cover" />
           </div>
           <div className='z-20 w-full h-full'>
-            Design Works
+            {designText}
           </div>
           <div className='z-20'>
             <svg width="1em" height="1em" className="h-6  float-right group-hover:text-primary-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ease-in-out duration-100 z-20" data-icon="ri:arrow-right-up-line">   <symbol id="ai:ri:arrow-right-up-line" viewBox="0 0 24 24"><path fill="currentColor" d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"></path></symbol><use href="#ai:ri:arrow-right-up-line"></use>  </svg>
@@ -101,7 +110,7 @@ function InfoGrid() {
         {/* <Redir text="Blog" styleName="row-start-3 row-span-1 col-start-3" to="/blogs" /> */}
 
         {/* <Redir styleName="row-start-3 row-span-1  col-start-3" text="Blog"/> */}
-      </div>
+      </div >
     </>
   )
 }

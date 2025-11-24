@@ -5,6 +5,8 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 // replace icons with your own if needed
 import {
   FiCode,
+  FiChevronLeft,
+  FiChevronRight,
 } from "react-icons/fi";
 
 const DEFAULT_ITEMS = [
@@ -14,13 +16,31 @@ const DEFAULT_ITEMS = [
     id: 1,
     icon: <FiCode className="h-[16px] w-[16px] text-white" />,
     backgroundImage: "https://i.ibb.co/7NGSZ8DH/473684737-da787ca6-f7cc-4e46-8728-dc5407c4a2f6.jpg",
+    link: "https://github.com/Strbeni/Odoo-QuickDesk",
   },
   {
     title: "Minimal StartPage",
-    description: "Minimal And Fast and Customizable StartPage!",
+    description: "Minimal And Fast and Customizable StartPage Extension!",
     id: 1,
     icon: <FiCode className="h-[16px] w-[16px] text-white" />,
     backgroundImage: "https://i.ibb.co/6cRfTfH9/image.png",
+    link: "https://github.com/Strbeni/mstart",
+  },
+  {
+    title: "Dolchico",
+    description: "Ecommerce Platform For a Company",
+    id: 1,
+    icon: <FiCode className="h-[16px] w-[16px] text-white" />,
+    backgroundImage: "https://i.ibb.co/5gmzhQdX/image.png",
+    link: "https://dolchico.com/home",
+  },
+  {
+    title: "RoadGuard",
+    description: "Need Mechanic? RoadGuard is a platform to get instant Road Help.",
+    id: 1,
+    icon: <FiCode className="h-[16px] w-[16px] text-white" />,
+    backgroundImage: "https://i.ibb.co/5gmzhQdX/image.png",
+    link: "https://github.com/Strbeni/RoadGuard",
   },
 ]
 
@@ -52,28 +72,37 @@ function CardItem({ item, index, x, trackItemOffset, itemWidth, round, effective
       }}
       transition={effectiveTransition}
     >
-      {item.backgroundImage && (
-        <>
-          <div
-            className="absolute inset-0 z-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${item.backgroundImage})` }}
-          ></div>
-          <div className="absolute inset-0 z-10 bg-black/60"></div>
-        </>
-      )}
-      <div className={`relative z-20 flex flex-col h-full ${round ? "justify-center" : "justify-between"}`}>
-        <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
-          <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
-            {item.icon}
-          </span>
-        </div>
-        <div className="p-5">
-          <div className="mb-1 font-black text-lg text-white">
-            {item.title}
+      <a
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative block h-full w-full"
+        draggable="false"
+        onDragStart={(e) => e.preventDefault()} // Prevent native drag
+      >
+        {item.backgroundImage && (
+          <>
+            <div
+              className="absolute inset-0 z-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${item.backgroundImage})` }}
+            ></div>
+            <div className="absolute inset-0 z-10 bg-black/60"></div>
+          </>
+        )}
+        <div className={`relative z-20 flex flex-col h-full ${round ? "justify-center" : "justify-between"}`}>
+          <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
+            <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
+              {item.icon}
+            </span>
           </div>
-          <p className="text-sm text-white">{item.description}</p>
+          <div className="p-5">
+            <div className="mb-1 font-black text-lg text-white">
+              {item.title}
+            </div>
+            <p className="text-sm text-white">{item.description}</p>
+          </div>
         </div>
-      </div>
+      </a>
     </motion.div>
   );
 }
@@ -84,7 +113,7 @@ function ProjectCard({
   autoplay = false,
   autoplayDelay = 3000,
   pauseOnHover = false,
-  loop = true,
+  loop = false,
   round = false,
 }) {
   const containerPadding = 16;
@@ -149,6 +178,22 @@ function ProjectCard({
       x.set(0);
       setCurrentIndex(0);
       setTimeout(() => setIsResetting(false), 50);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else if (loop) {
+      setCurrentIndex(items.length - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < items.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else if (loop) {
+      setCurrentIndex(0);
     }
   };
 
@@ -248,6 +293,23 @@ function ProjectCard({
           ))}
         </div>
       </div>
+
+      {!round && (
+        <>
+          <button
+            onClick={handlePrev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+          >
+            <FiChevronLeft size={24} />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+          >
+            <FiChevronRight size={24} />
+          </button>
+        </>
+      )}
     </div>
   );
 }
