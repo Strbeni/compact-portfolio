@@ -24,7 +24,7 @@ const DEFAULT_ITEMS = [
     id: 1,
     icon: <FiCode className="h-[16px] w-[16px] text-white" />,
     backgroundImage: "https://i.ibb.co/6cRfTfH9/image.png",
-    link: "https://github.com/Strbeni/mstart",
+    link: "https://strbeni.github.io/mstart/",
   },
   {
     title: "Dolchico",
